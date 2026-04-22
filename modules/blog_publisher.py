@@ -509,3 +509,29 @@ def publish_article(article, niche, posts_dir="site/_posts"):
         f.write(html)
     print(f"[Blog] ✅ {filename}")
     return filepath
+
+
+def create_sitemap(site_dir="site"):
+    """Generate sitemap.xml for Google Search Console."""
+    import datetime
+    today = datetime.date.today().isoformat()
+
+    sitemap = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://a-admi.github.io/dreamhaus-marketing/</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://a-admi.github.io/dreamhaus-marketing/site/_posts/</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>""".format(today=today)
+
+    with open(os.path.join(site_dir, "sitemap.xml"), "w") as f:
+        f.write(sitemap)
+    print("[Blog] ✅ sitemap.xml created")

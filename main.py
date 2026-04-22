@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from modules.content_generator import generate_seo_article, generate_pinterest_pin
 from modules.telegram_poster   import run_daily_posts
-from modules.blog_publisher    import publish_article, create_jekyll_config, create_homepage
+from modules.blog_publisher    import publish_article, create_jekyll_config, create_homepage, create_sitemap
 from modules.topic_tracker     import get_fresh_topic
 from modules.affiliate_links   import get_links_for_niche, ETSY_PRODUCTS, AMAZON_PRODUCTS
 from config import AMAZON_TAG, SITE_URL, GITHUB_USERNAME, SITE_REPO
@@ -72,6 +72,7 @@ def run():
     if not os.path.exists("site/_config.yml"):
         create_jekyll_config()
         create_homepage()
+    create_sitemap()
 
     # Today's niche — cycles daily
     day_num      = datetime.date.today().toordinal()
