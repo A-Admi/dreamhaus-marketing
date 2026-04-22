@@ -278,6 +278,7 @@ def create_homepage(site_dir="site"):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DreamHaus Digital — Premium Printables & Digital Downloads</title>
 <meta name="description" content="Premium digital downloads for ADHD, business, health and creative entrepreneurs. Instant download on Etsy.">
+<meta name="google-site-verification" content="iFdgGc21iJQ8kwCVXcTABld8vadqJZE9sjTwfxvl2lI" />
 <style>{CSS}</style>
 </head>
 <body>
