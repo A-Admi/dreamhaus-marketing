@@ -2,8 +2,11 @@ name: DreamHaus Daily Marketing Automation
 
 on:
   schedule:
-    - cron: "0 9 * * *"   # 9AM UTC daily
+    - cron: "0 9 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   automate:
@@ -14,6 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -24,17 +28,17 @@ jobs:
 
       - name: Restore topic history
         run: |
-          mkdir -p data site/_posts
+          mkdir -p data site/_posts site/_layouts
           if [ -n "${{ secrets.USED_TOPICS }}" ]; then
             echo "${{ secrets.USED_TOPICS }}" | base64 -d > data/used_topics.json || true
           fi
 
       - name: Inject API keys
         run: |
-          sed -i "s/YOUR_GROQ_API_KEY_HERE/${{ secrets.GROQ_API_KEY }}/g"           config.py
-          sed -i "s/YOUR_GEMINI_API_KEY_HERE/${{ secrets.GEMINI_API_KEY }}/g"       config.py
-          sed -i "s/YOUR_CLAUDE_API_KEY_HERE/${{ secrets.CLAUDE_API_KEY }}/g"       config.py
-          sed -i "s/YOUR_TELEGRAM_BOT_TOKEN_HERE/${{ secrets.TELEGRAM_BOT_TOKEN }}/g" config.py
+          sed -i "s/YOUR_GROQ_API_KEY_HERE/${{ secrets.GROQ_API_KEY }}/g"              config.py
+          sed -i "s/YOUR_GEMINI_API_KEY_HERE/${{ secrets.GEMINI_API_KEY }}/g"          config.py
+          sed -i "s/YOUR_CLAUDE_API_KEY_HERE/${{ secrets.CLAUDE_API_KEY }}/g"          config.py
+          sed -i "s/YOUR_TELEGRAM_BOT_TOKEN_HERE/${{ secrets.TELEGRAM_BOT_TOKEN }}/g"  config.py
 
       - name: Run automation
         run: python main.py
@@ -45,3 +49,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir:  ./site
           publish_branch: gh-pages
+          force_orphan: true
