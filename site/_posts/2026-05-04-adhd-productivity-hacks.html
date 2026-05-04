@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADHD Productivity Hacks | DreamHaus Digital</title>
+<meta name="description" content="Boost productivity with these 10 ADHD hacks">
+<style>
+:root {
+  --primary: #6C63FF;
+  --secondary: #FF6584;
+  --dark: #1a1a2e;
+  --card-bg: #ffffff;
+  --text: #333;
+  --light: #f8f8ff;
+  --accent: #43e97b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #f4f4f8; }
+
+/* NAV */
+nav {
+  background: var(--dark);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.logo { color: white; font-size: 1.4em; font-weight: 700; text-decoration: none; }
+.logo span { color: var(--primary); }
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: white; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 20px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(108,99,255,0.15) 0%, transparent 60%);
+}
+.hero h1 {
+  font-size: clamp(2em, 5vw, 3.5em);
+  margin-bottom: 20px;
+  position: relative;
+  line-height: 1.2;
+}
+.hero h1 span { color: var(--primary); }
+.hero p { font-size: 1.2em; opacity: 0.85; max-width: 600px; margin: 0 auto 35px; position: relative; }
+.btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1em;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(108,99,255,0.5); }
+.btn-secondary {
+  background: transparent;
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: all 0.2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+/* STATS */
+.stats {
+  background: var(--primary);
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.stat { text-align: center; color: white; }
+.stat-num { font-size: 2em; font-weight: 900; }
+.stat-label { font-size: 13px; opacity: 0.85; }
+
+/* PRODUCTS SECTION */
+.section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 2em; color: var(--dark); margin-bottom: 10px; }
+.section-sub { text-align: center; color: #666; margin-bottom: 40px; font-size: 1.05em; }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+.product-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #eee;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.product-icon { font-size: 2.5em; margin-bottom: 15px; }
+.product-card h3 { color: var(--dark); margin-bottom: 10px; font-size: 1.05em; }
+.product-card p { color: #666; font-size: 14px; margin-bottom: 15px; line-height: 1.5; }
+.price { font-size: 1.4em; font-weight: 900; color: var(--primary); margin-bottom: 15px; }
+.btn-card {
+  background: var(--primary);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.2s;
+}
+.btn-card:hover { background: #5a52e0; }
+
+/* AFFILIATE SECTION */
+.affiliate-section {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  padding: 60px 20px;
+  color: white;
+  text-align: center;
+}
+.affiliate-section h2 { font-size: 2em; margin-bottom: 10px; }
+.affiliate-section p { opacity: 0.8; margin-bottom: 35px; }
+.aff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.aff-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 25px 20px;
+  transition: background 0.2s;
+}
+.aff-card:hover { background: rgba(255,255,255,0.12); }
+.aff-card .icon { font-size: 2em; margin-bottom: 12px; }
+.aff-card h4 { color: white; margin-bottom: 8px; font-size: 1em; }
+.aff-card p { font-size: 13px; opacity: 0.7; margin-bottom: 15px; }
+.btn-aff {
+  background: var(--accent);
+  color: var(--dark);
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* BLOG SECTION */
+.blog-section { padding: 60px 20px; background: var(--light); }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.blog-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  transition: transform 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); }
+.blog-tag { background: var(--primary); color: white; font-size: 11px; padding: 3px 12px; border-radius: 50px; display: inline-block; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.blog-card h3 { color: var(--dark); font-size: 1.05em; margin-bottom: 10px; }
+.blog-card p { color: #666; font-size: 14px; line-height: 1.6; }
+
+/* CTA BANNER */
+.cta-banner {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+.cta-banner h2 { font-size: 2.2em; margin-bottom: 15px; }
+.cta-banner p { font-size: 1.1em; opacity: 0.9; margin-bottom: 30px; }
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  color: #aaa;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 14px;
+}
+footer a { color: var(--primary); text-decoration: none; }
+
+/* ARTICLE PAGE */
+.article-container { max-width: 780px; margin: 40px auto; padding: 0 20px; }
+.article-header { margin-bottom: 30px; }
+.article-header h1 { font-size: 2em; color: var(--dark); line-height: 1.3; margin-bottom: 10px; }
+.article-meta { color: #888; font-size: 14px; margin-bottom: 20px; }
+.article-body { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); line-height: 1.8; }
+.article-body h2 { color: var(--dark); margin: 30px 0 15px; }
+.article-body p { margin-bottom: 16px; }
+.article-body a { color: var(--primary); }
+.article-body ul { padding-left: 25px; margin-bottom: 16px; }
+.article-body li { margin-bottom: 8px; }
+.promo-box { background: linear-gradient(135deg, #667eea22, #764ba222); border: 2px solid var(--primary); border-radius: 16px; padding: 25px; margin: 30px 0; text-align: center; }
+.promo-box h3 { color: var(--dark); margin-bottom: 15px; }
+
+@media (max-width: 600px) {
+  .stats { gap: 25px; }
+  nav { flex-direction: column; gap: 10px; }
+  .article-body { padding: 25px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/dreamhaus-marketing/" class="logo">Dream<span>Haus</span> Digital</a>
+  <div class="nav-links">
+    <a href="https://www.etsy.com/shop/DreamHausDigital" target="_blank">🛍️ Shop</a>
+    <a href="https://t.me/dreamhausdigital" target="_blank">📱 Telegram</a>
+  </div>
+</nav>
+
+<div class="article-container">
+  <div class="article-header">
+    <span class="blog-tag">adhd</span>
+    <h1>ADHD Productivity Hacks</h1>
+    <div class="article-meta">📅 2026-05-04 &nbsp;|&nbsp; DreamHaus Digital</div>
+  </div>
+
+  <div class="promo-box">
+    <h3>🛍️ Shop Our Digital Downloads</h3>
+    <div class="btn-group" style="justify-content:center;margin-top:15px">
+      <a href="https://www.etsy.com/shop/DreamHausDigital" class="btn-primary" target="_blank">Visit Etsy Shop</a>
+      <a href="https://t.me/dreamhausdigital" class="btn-secondary" style="color:#333;border-color:#ccc" target="_blank">Join Telegram</a>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <h2>Introduction to ADHD Productivity Hacks</h2>
+Living with ADHD can be challenging, especially when it comes to managing time and staying productive. However, with the right strategies and tools, individuals with ADHD can achieve their goals and improve their overall well-being. In this article, we will explore 10 ADHD productivity hacks that actually work.
+<h2>1. Create a Morning Routine</h2>
+Starting the day with a consistent morning routine can help individuals with ADHD stay focused and energized. This can include activities such as exercise, meditation, or journaling. Using a planner, like the <a href="https://www.amazon.com/dp/B09ADHD123?tag=hitorica-20" target="_blank">ADHD Planner for Adults</a>, can help you stay organized and on track.
+<h2>2. Break Tasks into Smaller Steps</h2>
+Large tasks can be overwhelming for individuals with ADHD, which is why breaking them down into smaller, manageable steps is essential. This technique can help reduce stress and increase productivity. You can use the <a href="https://www.etsy.com/listing/4322772731" target="_blank">ADHD Dopamine Menu Template</a> to identify and prioritize tasks that bring you joy and motivation.
+<h2>3. Use the Pomodoro Technique</h2>
+The Pomodoro Technique involves working in focused, 25-minute increments, followed by a five-minute break. This technique can help individuals with ADHD stay focused and avoid burnout. After four cycles, take a longer break of 15-30 minutes to recharge.
+<h2>4. Eliminate Distractions</h2>
+Individuals with ADHD are often easily distracted, which is why eliminating distractions is crucial for productivity. This can include turning off notifications, finding a quiet workspace, or using noise-cancelling headphones.
+<h2>5. Use Music to Your Advantage</h2>
+Music can be a powerful tool for individuals with ADHD. Listening to music without lyrics or with a consistent beat can help improve focus and concentration. Some people also find that listening to music that evokes strong emotions can help increase motivation and productivity.
+<h2>6. Get Moving</h2>
+Regular exercise is essential for individuals with ADHD, as it can help improve focus, reduce stress, and increase energy levels. Finding an enjoyable physical activity, such as walking or yoga, can help make exercise a sustainable part of your routine.
+<h2>7. Practice Mindfulness</h2>
+Mindfulness techniques, such as meditation or deep breathing, can help individuals with ADHD stay present and focused. These techniques can also help reduce stress and anxiety. The <a href="https://www.etsy.com/listing/4341458916" target="_blank">Neurodivergent Wellness Bundle</a> offers a range of mindfulness exercises and worksheets to support mental health and well-being.
+<h2>8. Use Visual Reminders</h2>
+Visual reminders, such as post-it notes or a whiteboard, can help individuals with ADHD stay on track and remember important tasks. You can also use the <a href="https://www.etsy.com/listing/4322774440" target="_blank">ADHD Budget Tracker</a> to stay on top of your finances and make informed decisions.
+<h2>9. Prioritize Self-Care</h2>
+Self-care is essential for individuals with ADHD, as it can help reduce stress and increase productivity. This can include activities such as reading, taking a relaxing bath, or spending time in nature.
+<h2>10. Seek Support</h2>
+Finally, seeking support from friends, family, or a mental health professional can be incredibly beneficial for individuals with ADHD. Reading books, such as <a href="https://www.amazon.com/dp/1583335080?tag=hitorica-20" target="_blank">The ADHD Advantage Book</a>, can also provide valuable insights and strategies for managing ADHD.
+<h2>Conclusion</h2>
+Living with ADHD requires creativity, flexibility, and patience. By incorporating these 10 productivity hacks into your daily routine, you can improve your focus, increase your productivity, and achieve your goals. Remember to stay organized, prioritize self-care, and seek support when needed. Now, take the first step towards boosting your productivity and shop for ADHD-friendly tools and resources on Etsy and Amazon.
+  </div>
+
+  <div class="promo-box" style="margin-top:30px">
+    <h3>💊 Recommended Resources</h3>
+    <div class="btn-group" style="justify-content:center;margin-top:15px;flex-wrap:wrap">
+      <a href="https://pinealguardianvip.com/ds/indexts.php#aff=Ahfirnet" class="btn-primary" target="_blank">🧠 Pineal Guardian</a>
+      <a href="https://www.advancedbionutritionals.com/DS24/Advanced-Mitochondrial/Too-Tired-To-Enjoy-It/HD.htm#aff=Ahfirnet" class="btn-primary" target="_blank">⚡ Beat Fatigue</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 DreamHaus Digital &nbsp;|&nbsp; <a href="https://www.etsy.com/shop/DreamHausDigital">Etsy Shop</a></p>
+</footer>
+</body>
+</html>
