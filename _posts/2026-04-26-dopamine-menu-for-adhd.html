@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dopamine Menu for ADHD | DreamHaus Digital</title>
+<meta name="description" content="Boost daily motivation with a dopamine menu">
+<style>
+:root {
+  --primary: #6C63FF;
+  --secondary: #FF6584;
+  --dark: #1a1a2e;
+  --card-bg: #ffffff;
+  --text: #333;
+  --light: #f8f8ff;
+  --accent: #43e97b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #f4f4f8; }
+
+/* NAV */
+nav {
+  background: var(--dark);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.logo { color: white; font-size: 1.4em; font-weight: 700; text-decoration: none; }
+.logo span { color: var(--primary); }
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: white; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 20px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(108,99,255,0.15) 0%, transparent 60%);
+}
+.hero h1 {
+  font-size: clamp(2em, 5vw, 3.5em);
+  margin-bottom: 20px;
+  position: relative;
+  line-height: 1.2;
+}
+.hero h1 span { color: var(--primary); }
+.hero p { font-size: 1.2em; opacity: 0.85; max-width: 600px; margin: 0 auto 35px; position: relative; }
+.btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1em;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(108,99,255,0.5); }
+.btn-secondary {
+  background: transparent;
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: all 0.2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+/* STATS */
+.stats {
+  background: var(--primary);
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.stat { text-align: center; color: white; }
+.stat-num { font-size: 2em; font-weight: 900; }
+.stat-label { font-size: 13px; opacity: 0.85; }
+
+/* PRODUCTS SECTION */
+.section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 2em; color: var(--dark); margin-bottom: 10px; }
+.section-sub { text-align: center; color: #666; margin-bottom: 40px; font-size: 1.05em; }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+.product-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #eee;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.product-icon { font-size: 2.5em; margin-bottom: 15px; }
+.product-card h3 { color: var(--dark); margin-bottom: 10px; font-size: 1.05em; }
+.product-card p { color: #666; font-size: 14px; margin-bottom: 15px; line-height: 1.5; }
+.price { font-size: 1.4em; font-weight: 900; color: var(--primary); margin-bottom: 15px; }
+.btn-card {
+  background: var(--primary);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.2s;
+}
+.btn-card:hover { background: #5a52e0; }
+
+/* AFFILIATE SECTION */
+.affiliate-section {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  padding: 60px 20px;
+  color: white;
+  text-align: center;
+}
+.affiliate-section h2 { font-size: 2em; margin-bottom: 10px; }
+.affiliate-section p { opacity: 0.8; margin-bottom: 35px; }
+.aff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.aff-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 25px 20px;
+  transition: background 0.2s;
+}
+.aff-card:hover { background: rgba(255,255,255,0.12); }
+.aff-card .icon { font-size: 2em; margin-bottom: 12px; }
+.aff-card h4 { color: white; margin-bottom: 8px; font-size: 1em; }
+.aff-card p { font-size: 13px; opacity: 0.7; margin-bottom: 15px; }
+.btn-aff {
+  background: var(--accent);
+  color: var(--dark);
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* BLOG SECTION */
+.blog-section { padding: 60px 20px; background: var(--light); }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.blog-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  transition: transform 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); }
+.blog-tag { background: var(--primary); color: white; font-size: 11px; padding: 3px 12px; border-radius: 50px; display: inline-block; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.blog-card h3 { color: var(--dark); font-size: 1.05em; margin-bottom: 10px; }
+.blog-card p { color: #666; font-size: 14px; line-height: 1.6; }
+
+/* CTA BANNER */
+.cta-banner {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+.cta-banner h2 { font-size: 2.2em; margin-bottom: 15px; }
+.cta-banner p { font-size: 1.1em; opacity: 0.9; margin-bottom: 30px; }
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  color: #aaa;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 14px;
+}
+footer a { color: var(--primary); text-decoration: none; }
+
+/* ARTICLE PAGE */
+.article-container { max-width: 780px; margin: 40px auto; padding: 0 20px; }
+.article-header { margin-bottom: 30px; }
+.article-header h1 { font-size: 2em; color: var(--dark); line-height: 1.3; margin-bottom: 10px; }
+.article-meta { color: #888; font-size: 14px; margin-bottom: 20px; }
+.article-body { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); line-height: 1.8; }
+.article-body h2 { color: var(--dark); margin: 30px 0 15px; }
+.article-body p { margin-bottom: 16px; }
+.article-body a { color: var(--primary); }
+.article-body ul { padding-left: 25px; margin-bottom: 16px; }
+.article-body li { margin-bottom: 8px; }
+.promo-box { background: linear-gradient(135deg, #667eea22, #764ba222); border: 2px solid var(--primary); border-radius: 16px; padding: 25px; margin: 30px 0; text-align: center; }
+.promo-box h3 { color: var(--dark); margin-bottom: 15px; }
+
+@media (max-width: 600px) {
+  .stats { gap: 25px; }
+  nav { flex-direction: column; gap: 10px; }
+  .article-body { padding: 25px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/dreamhaus-marketing/" class="logo">Dream<span>Haus</span> Digital</a>
+  <div class="nav-links">
+    <a href="https://www.etsy.com/shop/DreamHausDigital" target="_blank">🛍️ Shop</a>
+    <a href="https://t.me/dreamhausdigital" target="_blank">📱 Telegram</a>
+  </div>
+</nav>
+
+<div class="article-container">
+  <div class="article-header">
+    <span class="blog-tag">adhd</span>
+    <h1>Dopamine Menu for ADHD</h1>
+    <div class="article-meta">📅 2026-04-26 &nbsp;|&nbsp; DreamHaus Digital</div>
+  </div>
+
+  <div class="promo-box">
+    <h3>🛍️ Shop Our Digital Downloads</h3>
+    <div class="btn-group" style="justify-content:center;margin-top:15px">
+      <a href="https://www.etsy.com/shop/DreamHausDigital" class="btn-primary" target="_blank">Visit Etsy Shop</a>
+      <a href="https://t.me/dreamhausdigital" class="btn-secondary" style="color:#333;border-color:#ccc" target="_blank">Join Telegram</a>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <h2>Introduction to Dopamine Menus for ADHD</h2>
+Dopamine is a neurotransmitter that plays a crucial role in motivation, pleasure, and reward processing. For individuals with Attention Deficit Hyperactivity Disorder (ADHD), dopamine levels can be imbalanced, leading to difficulties in staying motivated and focused. A dopamine menu is a tool that can help individuals with ADHD increase their motivation and productivity by providing a list of activities that stimulate dopamine release.
+<h2>What is a Dopamine Menu?</h2>
+A dopamine menu is a personalized list of activities that an individual finds enjoyable and rewarding. These activities can be as simple as taking a walk, reading a book, or practicing a hobby. The idea behind a dopamine menu is to create a list of activities that can be used to boost dopamine levels throughout the day. By incorporating these activities into their daily routine, individuals with ADHD can improve their motivation and focus.
+<h2>Creating a Dopamine Menu</h2>
+To create a dopamine menu, start by brainstorming a list of activities that bring you joy and pleasure. Consider activities that you enjoy doing in your free time, as well as activities that make you feel accomplished and productive. You can use a template, such as the <a href="https://www.etsy.com/listing/4322772731" target="_blank">ADHD Dopamine Menu Template</a> available on Etsy, to help you get started.
+<h2>Using Your Dopamine Menu</h2>
+Once you have created your dopamine menu, it's time to start using it. Here are a few tips to get you started:
+* Review your menu regularly to ensure that it remains relevant and effective
+* Incorporate activities from your menu into your daily routine, such as during breaks or after completing tasks
+* Experiment with different activities to find what works best for you
+* Consider combining your dopamine menu with other tools, such as an <a href="https://www.etsy.com/listing/4322774440" target="_blank">ADHD Budget Tracker</a>, to help you stay organized and motivated
+<h2>Additional Tools for ADHD Management</h2>
+In addition to a dopamine menu, there are several other tools that can help individuals with ADHD manage their symptoms and improve their productivity. For example, the <a href="https://www.etsy.com/listing/4341458916" target="_blank">Neurodivergent Wellness Bundle</a> available on Etsy provides a comprehensive set of resources for managing ADHD and other neurodiverse conditions. You can also find helpful books, such as <a href="https://www.amazon.com/dp/1583335080?tag=hitorica-20" target="_blank">The ADHD Advantage Book</a> on Amazon, that offer insights and strategies for managing ADHD.
+<h2>Putting it All Together</h2>
+By using a dopamine menu and incorporating other tools and strategies into your daily routine, you can improve your motivation and productivity, and better manage your ADHD symptoms. Consider using a planner, such as the <a href="https://www.amazon.com/dp/B09ADHD123?tag=hitorica-20" target="_blank">ADHD Planner for Adults</a>, to help you stay organized and on track.
+<h2>Conclusion</h2>
+A dopamine menu is a powerful tool for individuals with ADHD, providing a personalized list of activities that can help boost motivation and productivity. By creating and using a dopamine menu, and incorporating other tools and strategies into your daily routine, you can take control of your ADHD symptoms and improve your overall well-being. Shop now and start creating your own dopamine menu with the help of our resources.
+  </div>
+
+  <div class="promo-box" style="margin-top:30px">
+    <h3>💊 Recommended Resources</h3>
+    <div class="btn-group" style="justify-content:center;margin-top:15px;flex-wrap:wrap">
+      <a href="https://pinealguardianvip.com/ds/indexts.php#aff=Ahfirnet" class="btn-primary" target="_blank">🧠 Pineal Guardian</a>
+      <a href="https://www.advancedbionutritionals.com/DS24/Advanced-Mitochondrial/Too-Tired-To-Enjoy-It/HD.htm#aff=Ahfirnet" class="btn-primary" target="_blank">⚡ Beat Fatigue</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 DreamHaus Digital &nbsp;|&nbsp; <a href="https://www.etsy.com/shop/DreamHausDigital">Etsy Shop</a></p>
+</footer>
+</body>
+</html>
